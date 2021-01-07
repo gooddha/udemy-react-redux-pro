@@ -1,24 +1,20 @@
-import React from 'react';
+// import React from 'react';
 import ReactDOM from 'react-dom';
-import TodoList from './components/todo-list'
 
-const items = ['Learn React JS', 'Buld Awesome App']
+import AppHeader from './components/app-header';
+import SearchPanel from './components/search-panel';
+import TodoList from './components/todo-list';
 
 
-
-const AppHeader = () => {
-  return <h1>My Todo List</h1>;
-}
-
-const SearchPanel = () => {
-    const searchText = 'Type here to search';
-    const searchStyle = {
-      fontSize: '25px'
-    };
-    return <input type="text" style={searchStyle} placeholder={searchText} />;
-}
+// const items = ['Learn React JS', 'Buld Awesome App']
 
 const App = () => {
+
+  const todoData = [
+    { label: 'Drink Coffe', important: false },
+    { label: 'Make Awesome App', important: true },
+    { label: 'Have a lunch', important: false }
+  ];
 
   const isLoggedIn = true;
   const loginBox = <span>Log in please</span>;
@@ -29,7 +25,7 @@ const App = () => {
       { isLoggedIn ? welcomeBox : loginBox }
       <AppHeader />
       <SearchPanel />
-      <TodoList />
+      <TodoList todos = { todoData } />
     </div>
   );
 }

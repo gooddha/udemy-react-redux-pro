@@ -1,8 +1,16 @@
-const TodoList = () => {
+// import React from 'react';
+import TodoListItem from './todo-list-item'
+
+const TodoList = ( { todos } ) => {
+
+  const elements = todos.map( item => {
+    // return <li><TodoListItem label={item.label} important={item.important} /></li>      
+    return <li><TodoListItem { ...item } /></li>      
+  })
+
   return (
-    <ul>
-      <li>Learn React JS</li>
-      <li>Drink Coffe</li>      
+    <ul>      
+      { elements }
     </ul>
   );
 }
