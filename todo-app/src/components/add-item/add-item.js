@@ -10,7 +10,7 @@ export default class AddItem extends Component {
 
     return (
       <div>
-        <button className="add-item btn btn-outline-secondary" onClick={onAddItem}> Add item </button>
+        <button className="add-item btn btn-outline-secondary" onClick={() => onAddItem('Hello world')}> Add item </button>
       </div>
     )
   }
