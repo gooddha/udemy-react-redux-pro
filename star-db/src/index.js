@@ -1,12 +1,20 @@
-const getResource = async (url) => {
-  const res = await fetch(url);
-  const body = await res.json();
+import ReactDOM from 'react-dom';
 
-  return body;
-};
+import App from './components/app/';
+import SwapiService from './services/swapi-service';
 
-getResource('https://swapi.dev/api/people/1').then(body => {
-  console.log(body)
-}).catch(err => {
-  console.error('Couldnt catch ', err);
-});
+
+const swapi = new SwapiService();
+
+swapi.getAllPeople().then(people => {
+  people.forEach(p => {
+    console.log(p.name);
+  })
+})
+
+swapi.getPerson(3).then(p => {
+  console.log(p.name);
+})
+
+ReactDOM.render(<App />, document.getElementById('root'));
+
