@@ -2,6 +2,7 @@
   display: flex;
   padding: 1rem;
   min-height: 182px;
+  margin-bottom: 1em;
 }
 
 .random-planet .planet-image {
