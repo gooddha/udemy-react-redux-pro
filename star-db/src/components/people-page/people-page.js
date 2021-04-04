@@ -5,8 +5,9 @@ import PersonDetails from '../person-details/';
 import './people-page.css';
 import ErrorIndicator from '../error-indicator';
 
-import SwapiService from '../../services/swapi-service'
+import SwapiService from '../../services/swapi-service';
 
+import ErrorBoundary from '../error-boundary/'
 
 export default class PeoplePage extends React.Component {
 
@@ -39,19 +40,23 @@ export default class PeoplePage extends React.Component {
       <ItemList 
         onItemSelected={this.onItemSelected} 
         getData={this.swapiService.getAllPeople} 
-        renderItem ={({name, gender, birthYear}) => `${ name } (${ gender }, ${ birthYear })`} 
-      />
+        >
+
+          {(i) => (
+            `${i.name} (${i.birthYear})`
+          )}
+
+      </ItemList>
     );
 
     const personDetails = (
-      <PersonDetails personId={this.state.selectedPerson} />
+      <ErrorBoundary>
+        <PersonDetails personId={this.state.selectedPerson} />
+      </ErrorBoundary>
     );
 
     return (
-      <div>
         <Row left={itemList} right={personDetails} />
-        <Row left="Foo" right="Bar" />
-      </div>
     )
   }
 
