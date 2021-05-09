@@ -4,6 +4,17 @@ import './item-details.css';
 import Spinner from '../spinner'
 import ErrorButton from '../error-button';
 
+const Record = ({ field, label }) => {
+  return (
+    <li className="list-group-item">
+      <span className="term">{label}</span>
+      <span>{field}</span>
+    </li>
+  );
+};
+
+export { Record };
+
 
 export default class ItemDetails extends React.Component {
 
@@ -36,7 +47,7 @@ export default class ItemDetails extends React.Component {
 
     getData(itemId)
       .then((item) => {
-        console.log(getImageURL(item))
+        console.log(item)
         this.setState({ item, image: getImageURL(item), loading: false });
       })
   }
@@ -61,7 +72,23 @@ export default class ItemDetails extends React.Component {
     } else {
       return (
         <div className="person-details card">
-          <PersonView person={item} image={image} />
+
+          <img className="person-image"
+            src={image} />
+
+          <div className="card-body">
+            <h4>{item.name}</h4>
+            <ul className="list-group list-group-flush">
+              {
+                React.Children.map(this.props.children, (child, idx) => {
+                  return <li>{idx}</li>;
+                })
+              }
+            </ul>
+
+            <ErrorButton />
+          </div>
+
         </div>
       );
     }
@@ -82,18 +109,7 @@ const PersonView = ({ person, image }) => {
       <div className="card-body">
         <h4>{name}</h4>
         <ul className="list-group list-group-flush">
-          <li className="list-group-item">
-            <span className="term">Gender</span>
-            <span>{gender}</span>
-          </li>
-          <li className="list-group-item">
-            <span className="term">Birth Year</span>
-            <span>{birthYear}</span>
-          </li>
-          <li className="list-group-item">
-            <span className="term">Eye Color</span>
-            <span>{eyeColor}</span>
-          </li>
+          {this.props.children}
         </ul>
 
         <ErrorButton />
