@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import ErrorIndicator from '../error-indicator/'
+import ErrorIndicator from '../error-indicator'
 
-export class ErrorBoundary extends Component {
-  
+export class ErrorBoundry extends Component {
+
   state = {
     hasError: false
   }
@@ -23,4 +23,4 @@ export class ErrorBoundary extends Component {
   }
 }
 
-export default ErrorBoundary
+export default ErrorBoundry

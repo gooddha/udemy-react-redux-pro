@@ -1,13 +1,12 @@
 import React from 'react';
 import Row from '../row/';
 import ItemList from '../item-list/';
-import PersonDetails from '../person-details/';
+import ItemDetails from '../item-details/';
 import './people-page.css';
 import ErrorIndicator from '../error-indicator';
+import ErrorBoundry from '../error-boundry/'
 
 import SwapiService from '../../services/swapi-service';
-
-import ErrorBoundary from '../error-boundary/'
 
 export default class PeoplePage extends React.Component {
 
@@ -37,26 +36,26 @@ export default class PeoplePage extends React.Component {
     }
 
     const itemList = (
-      <ItemList 
-        onItemSelected={this.onItemSelected} 
-        getData={this.swapiService.getAllPeople} 
-        >
+      <ItemList
+        onItemSelected={this.onItemSelected}
+        getData={this.swapiService.getAllPeople}
+      >
 
-          {(i) => (
-            `${i.name} (${i.birthYear})`
-          )}
+        {(i) => (
+          `${i.name} (${i.birthYear})`
+        )}
 
       </ItemList>
     );
 
-    const personDetails = (
-      <ErrorBoundary>
-        <PersonDetails personId={this.state.selectedPerson} />
-      </ErrorBoundary>
+    const itemDetails = (
+      <ErrorBoundry>
+        <ItemDetails itemId={this.state.selectedItem} />
+      </ErrorBoundry>
     );
 
     return (
-        <Row left={itemList} right={personDetails} />
+      <Row left={itemList} right={itemDetails} />
     )
   }
 
