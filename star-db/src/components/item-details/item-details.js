@@ -46,7 +46,6 @@ export default class ItemDetails extends React.Component {
 
     getData(itemId)
       .then((item) => {
-        console.log(item)
         this.setState({ item, image: getImageURL(item), loading: false });
       })
   }

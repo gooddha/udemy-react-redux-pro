@@ -8,6 +8,7 @@ import ErrorBoundry from '../error-boundry/';
 import './app.css';
 import SwapiService from '../../services/swapi-service';
 import Row from '../row';
+import ItemList from '../item-list/item-list';
 
 export default class App extends React.Component {
 
@@ -39,7 +40,7 @@ export default class App extends React.Component {
       <RandomPlanet /> :
       null;
 
-    const { getPerson, getStarship, getPersonImage, getStarshipImage } = this.swapiService;
+    const { getPerson, getAllPeople, getStarship, getPersonImage, getStarshipImage, getAllPlanets } = this.swapiService;
 
     const personDetails = (
       <ItemDetails
@@ -72,6 +73,19 @@ export default class App extends React.Component {
           <Row
             left={personDetails}
             right={starshipDetails} />
+
+          <ItemList
+            getData={getAllPeople}
+            onItemSelected={() => { }}>
+            {({ name }) => <span>{name}</span>}
+          </ItemList>
+
+
+          <ItemList
+            getData={getAllPlanets}
+            onItemSelected={() => { }}>
+            {({ name }) => <span>{name}</span>}
+          </ItemList>
 
 
         </div>
