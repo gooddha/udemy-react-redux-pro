@@ -1,6 +1,6 @@
 import React from 'react';
 import ItemDetails, { Record } from '../item-details';
-import { SwapiServiceConsumer } from '../swapi-service-context/'
+import { SwapiServiceConsumer } from '../swapi-service-context/';
 
 const PersonDetails = ({ itemId }) => {
 
@@ -43,8 +43,6 @@ const PlanetDetails = ({ itemId }) => {
     </SwapiServiceConsumer>
   )
 };
-
-
 const StarshipDetails = ({ itemId }) => {
   return (
     <SwapiServiceConsumer>
