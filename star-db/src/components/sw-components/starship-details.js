@@ -23,6 +23,4 @@ const StarshipDetails = ({ itemId }) => {
   )
 };
 
-export {
-  StarshipDetails
-}
+export default StarshipDetails;

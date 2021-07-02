@@ -3,7 +3,7 @@ import React from 'react';
 import Header from '../header/';
 import ErrorBoundry from '../error-boundry/';
 import { PersonList, StarshipList, PlanetList } from '../sw-components/item-lists';
-import { PersonDetails, StarshipDetails, PlanetDetails } from '../sw-components/details';
+import { PersonDetails, StarshipDetails, PlanetDetails } from '../sw-components/';
 
 import SwapiService from '../../services/swapi-service';
 import { SwapiServiceProvider } from '../swapi-service-context/';
@@ -43,7 +43,7 @@ export default class App extends React.Component {
             <Header />
 
             <PersonDetails itemId={11} />
-            <PlanetDetails itemId={5} />
+            <PlanetDetails itemId={2} />
             <StarshipDetails itemId={9} />
 
             <PersonList />
